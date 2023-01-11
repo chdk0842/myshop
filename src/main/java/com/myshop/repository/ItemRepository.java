@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.myshop.constant.ItemSellStatus;
 import com.myshop.entity.Item;
@@ -24,6 +26,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	// select * from item where price < ? by price desc
 	List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
 
+	/*
 	// 퀴즈1-1
 	// select * from item where item_nm = ? || itemSellStatus = SELL
 	List<Item> findByItemNmAndItemSellStatus(String itemNm, ItemSellStatus ItemSellStatus);
@@ -43,4 +46,30 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	// 퀴즈1-5
 	// select * from item like ItemDetail(%설명1) 
 	List<Item> findByItemDetailEndingWith(String ItemDetail);
+	*/
+	
+	/*
+	 * @Query("select i from Item i where i.itemDetail like %:itemDetail% order by i.price desc"
+	 * ) List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);
+	 */
+	
+	@Query("select i from Item i where i.itemDetail like %?1% order by i.price desc")
+	List<Item> findByItemDetail(String itemDetail);
+	
+	@Query(value = "select * from item i where i.item_detail like %:itemDetail% order by i.price desc", nativeQuery = true)
+	List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
+	
+	//퀴즈2-1
+	
+	  @Query(value = "select * from item i where i.price >= :price", nativeQuery = true)
+      List<Item> findByPriceGreaterThan(@Param("price") Integer price);
+	
+	
+	//퀴즈2-2
+	/*
+	 * @Query("select i from Item i where i.itemNm in :itemNm and i.itemSellStatus in :itemSellStatus"
+	 * ) List<Item> findByItemNmitemSellStatus(@Param("itemNm") String
+	 * itemNm, @Param("itemSellStatus") ItemSellStatus itemSellStatus);
+	 */
+
 }
