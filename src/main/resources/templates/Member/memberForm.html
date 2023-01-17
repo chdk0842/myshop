@@ -40,7 +40,7 @@
 					class="fieldError">Incorrect Data</p>
 			</div>
 			<div>
-				<label th:for="email">이메일</label> <input type="text"
+				<label th:for="email">이메일</label> <input type="email"
 					th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요.">
 				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
 					class="fieldError">Incorrect Data</p>
