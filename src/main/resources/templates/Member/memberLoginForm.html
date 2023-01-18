@@ -11,7 +11,7 @@
 <th:block layout:fragment="script">
 <script th:inline="javascript">
       // 쿠키를 이용한 아이디 기억
-      $(document).ready(function{
+      $(document).ready(function() {
          var userInputId = getCookie("userInputId"); //쿠키의 키로 값을 가져온다
          var setCookieYN = getCookie("setCookieYN"); 
          
@@ -22,7 +22,7 @@
         	 $("#id_save").prop("checked", false); //체크 박스에 체크해체
          }
          
-         $('#loginbtn').click(function(){
+         $('#loginbtn').click(function() {
         	 //아이디를 쿠키에 저장
         	if($("#id_save").is(":checked")) { //체크가 되어있으면 true 리턴
         		var userInputId = $("#email").val(); //이메일 값을 가져온다.

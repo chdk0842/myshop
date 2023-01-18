@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 
-import com.myshop.constant.Role;
 import com.myshop.dto.MemberFormDto;
 import com.myshop.entity.Member;
 
