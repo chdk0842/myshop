@@ -9,7 +9,7 @@
 <th:block layout:fragment="script">
 <script th:inline="javascript">
       // 회원가입 실패했을 때
-      $(document).ready(function{
+      $(document).ready(function(){
          var errorMessage = [[${errorMessage}]];
          if (errorMessage != null) {
             alert(errorMessage);
