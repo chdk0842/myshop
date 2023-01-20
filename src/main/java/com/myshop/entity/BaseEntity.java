@@ -15,7 +15,7 @@ public class BaseEntity extends BaseTimeEntity {
 	
 	@CreatedBy
 	@Column(updatable = false) //등록만 되고 수정 안됨.
-	private String createBy; //등록자
+	private String createdBy; //등록자
     
 	@LastModifiedBy
 	private String modifiedBy; //수정자
